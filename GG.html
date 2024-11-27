@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        function purchaseGas() {
+           
+            let gasType;
+            let gasPrice = 0;
+          
+            while (true) {
+                gasType = prompt("Select the type of gasoline (U/u for Unleaded, D/d for Diesel):").toUpperCase();
+                
+                if (gasType === "U") {
+                    gasPrice = 40.00; 
+                    break;
+                } else if (gasType === "D") {
+                    gasPrice = 35.00; 
+                    break;
+                } else {
+                    alert("Invalid input! Please select either U/u for Unleaded or D/d for Diesel.");
+                }
+            }
+            
+          
+            let liters = 0;
+            
+           
+            while (true) {
+                liters = parseFloat(prompt("Enter the number of liters of gasoline you want to purchase:"));
+                
+                if (liters > 0) {
+                    break;
+                } else {
+                    alert("Please enter a positive number of liters greater than 0.");
+                }
+            }
+            
+           
+            let totalCost = liters * gasPrice;
+            alert("Total price: " + totalCost.toFixed(2) + " pesos");
+            
+           
+            let cashProvided = 0;
+            
+            while (true) {
+                cashProvided = parseFloat(prompt("Enter the amount of cash you are providing:"));
+                
+                if (cashProvided >= totalCost) {
+                    break;
+                } else {
+                    alert("Insufficient cash. Please enter an amount equal to or greater than " + totalCost.toFixed(2) + " pesos.");
+                }
+            }
+            let change = cashProvided - totalCost;
+            alert("Cash provided: " + cashProvided.toFixed(2) + " pesos\n" +
+                  "Change to return: " + change.toFixed(2) + " pesos");
+        }
+    </script>
+</head>
+<body>
+    <h1>Gasoline Purchase</h1>
+    <button onclick="purchaseGas()">Start Purchase</button>
+</body>
+</html>
